@@ -1,0 +1,203 @@
+<script setup lang="ts">
+import axios from '@/util/request'
+import HomeTopClassify from '@/components/home/HomeTopClassify.vue'
+import HomeLikeItem from '@/components/home/HomeLikeItem.vue'
+import { ref, onMounted, reactive } from 'vue'
+const count = ref(0)
+const isLoading = ref(false)
+const images = [
+  'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/25/196/ias_1c93a487013a15a446b69c7d64b2038a_1135x545_85.jpg',
+  'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/21/97/ias_60616acd6729d12be5eb7d5969770d8f_1135x545_85.jpg',
+  'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2022/11/01/163/ias_1a2a3e46db4457ad977223f136567ea3_1135x545_85.jpg',
+  'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2021/08/12/184/ias_67f14f070915b4a91b6ba98698c35d3c_1135x545_85.jpg'
+]
+const goods = reactive({
+  goodsList: [
+    {
+      createdAt: '2023-03-02T09:58:53.000Z',
+      deletedAt: null,
+      goods_classify: 10001,
+      goods_data: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
+      goods_discounts: '0.00',
+      goods_image: 'ly_e715142b5ff9340cf91decd00.jpg',
+      goods_name: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
+      goods_num: 51,
+      goods_price: '32.00',
+      goods_sell: 0,
+      goods_shop: 9,
+      id: 23,
+      updatedAt: '2023-03-02T09:58:53.000Z'
+    }
+  ]
+})
+// 在页面加载的时候, 请求数据;
+onMounted(() => {
+  axios.get('/goods/getGoodsList').then((res) => {
+    goods.goodsList = res.data.result.list
+    console.log(res.data.result.list)
+  })
+})
+
+// 下拉刷新;
+function onRefresh() {
+  setTimeout(() => {
+    count.value++
+    isLoading.value = false
+  }, 1000)
+}
+</script>
+<template>
+  <!-- 最外层的div; -->
+  <div>
+    <!-- 下拉刷新; -->
+    <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
+      <!-- 顶部搜索的最外层的div; -->
+      <div class="home-header">
+        <!-- 顶部的搜索部分; -->
+        <div class="home-header-one">
+          <!-- 扫码; -->
+          <div class="home-header-scan">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-scan"></use>
+            </svg>
+          </div>
+          <!-- 搜索框; -->
+          <div class="home-header-input">
+            <van-search placeholder="万千商品,值得你的拥有" shape="round" />
+          </div>
+          <!-- 跳转消息页; -->
+          <div class="home-header-information">
+            <svg class="icon home-header-scan" aria-hidden="true">
+              <use xlink:href="#icon-mark"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- 顶部轮播图; -->
+      <div class="home-header-swipe">
+        <van-swipe :autoplay="3000" lazy-render>
+          <van-swipe-item v-for="image in images" :key="image">
+            <img :src="image" class="home-header-swipe-img" />
+          </van-swipe-item>
+        </van-swipe>
+      </div>
+      <!-- 轮播下的注释; -->
+      <div class="header-swipe-down">
+        <div>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-tianmaozhengpinbaozhang"></use>
+          </svg>
+          100%正品保证
+        </div>
+        <div>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-servicejiayipeisan"></use>
+          </svg>
+          假一赔十
+        </div>
+        <div>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yuanxingshou"></use>
+          </svg>
+          24小时安心售后
+        </div>
+      </div>
+      <!-- 轮播下的分类按钮; -->
+      <HomeTopClassify></HomeTopClassify>
+      <!-- 顶部最新活动; -->
+      <div class="">
+        <img src="//b.appsimg.com/upload/momin/2023/03/02/13/1677750964961.jpg" alt="" />
+      </div>
+      <!-- 猜你喜欢; -->
+      <div class="home-like">
+        <p>猜你喜欢</p>
+        <div class="home-like-item">
+          <HomeLikeItem
+            v-for="(item, index) in goods.goodsList"
+            :key="index"
+            class="home-like-item-one"
+            :goodsData="item"
+          ></HomeLikeItem>
+        </div>
+      </div>
+    </van-pull-refresh>
+  </div>
+</template>
+<style scoped lang="less">
+/* 顶部红色底色; */
+.home-header {
+  height: 7.5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: red;
+  border-radius: 0% 0% 50% 50%;
+  //  顶部搜索栏的外部div;
+  .home-header-one {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 1.25rem;
+    background-color: aqua;
+    padding: 0.3125rem;
+  }
+  // 扫码图标;
+  .home-header-scan {
+    width: 0.625rem;
+    height: 0.625rem;
+    color: aliceblue;
+  }
+
+  // 顶部搜索栏样式;
+  .home-header-input {
+    height: 10px;
+  }
+  // 顶部跳转消息页图标;
+  // .home-header-information {
+  // }
+}
+// 顶部轮播图样式;
+.home-header-swipe {
+  width: 96%;
+  height: 3.75rem;
+  background-color: aquamarine;
+  margin-left: 0.1875rem;
+  margin-right: 0.1875rem;
+  position: absolute;
+  top: 3.125rem;
+  .home-header-swipe-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+// 轮播图下的注释样式;
+.header-swipe-down {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  color: red;
+  div {
+    width: 33.3333%;
+    font-size: 0.3125rem;
+    color: red;
+    svg {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  }
+}
+// 猜你喜欢样式;
+.home-like {
+  width: 100%;
+  background-color: #f4f4f4f4;
+  .home-like-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .home-like-item-one {
+      width: 46%;
+    }
+  }
+}
+</style>
