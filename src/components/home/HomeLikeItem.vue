@@ -50,7 +50,7 @@ defineProps({
   font-size: 0.4375rem;
   span {
     font-size: 0.3125rem;
-    margin-left: 8%;
+    margin-left: 3%;
     margin-top: 8%;
   }
   .home-like-item-price-font {

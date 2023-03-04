@@ -4,13 +4,28 @@ const requests = axios.create({
   // 设置基础路径;
   // baseURL: '/api',
   baseURL: 'http://www.lingyunstar.top:12138/',
+  // 设置请求头;
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  // 设置请求方式;
+  method: '',
+  // 设置请求参数;
+  params: {},
+  // 设置请求数据;
+  data: {},
   // 设置超时时间;
-  timeout: 5000
+  timeout: 5000,
+  // 设置是否携带凭证;
+  // withCredentials: true,
+  // 设置返回数据类型;
+  responseType: 'json'
 })
 // 添加请求拦截器
 requests.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
+
     return config
   },
   function (error) {

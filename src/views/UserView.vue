@@ -1,11 +1,6 @@
-<script setup lang="ts">
-import HomeLikeItem from '@/components/home/HomeLikeItem.vue'
-</script>
+<script setup lang="ts"></script>
 <template>
-  <div class="user">
-    <!-- <HomeLikeItem></HomeLikeItem>
-    <HomeLikeItem></HomeLikeItem> -->
-  </div>
+  <div class="user">用户页</div>
 </template>
 <style lang="less" scoped>
 .user {
