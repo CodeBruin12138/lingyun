@@ -6,21 +6,35 @@
   </van-cell-group>
 </template>
 <script lang="ts" setup>
-import { reactive, onBeforeUnmount } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { reactive, onBeforeMount, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { showNotify } from 'vant'
+import { useUserStore } from '@/stores/user'
 import { useUniversalStore } from '@/stores/universal'
 import axios from '@/util/request'
+const userStore = useUserStore()
 const universalStore = useUniversalStore()
 const router = useRouter()
 const user = reactive({
   user_name: '1677898900754',
   user_pwd: 'Admin@12138..'
 })
+// 生命周期;
+onBeforeMount(() => {
+  // 隐藏状态栏;
+  universalStore.setShowTabBar(false)
+  //判断是否登录,如果登录,跳转到用户页;
+  if (localStorage.getItem('ly_at')) {
+    router.push('/user')
+  }
+})
+onUnmounted(() => {
+  // 显示状态栏;
+  universalStore.setShowTabBar(true)
+})
 //登录按钮;
 const login = () => {
   axios.post('/user/login', user).then((res) => {
-    console.log(res)
     //判断是否登录成功;
     if (res.data.code === 0) {
       //登陆成功,提醒;
@@ -29,6 +43,8 @@ const login = () => {
         type: 'success',
         duration: 1000
       })
+      //保存用户信息;
+      userStore.setUserInfo(res.data.result.user)
       //保存token
       localStorage.setItem('ly_at', res.data.result.token)
       //跳转到用户页;

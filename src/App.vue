@@ -1,6 +1,6 @@
 <template>
   <router-view></router-view>
-  <van-tabbar v-model="active" route :v-show="universalStore.isShowTabBar">
+  <van-tabbar v-model="active" route v-show="universalStore.isShowTabBar">
     <van-tabbar-item to="/" icon="wap-home">首页</van-tabbar-item>
     <van-tabbar-item to="/discovery" icon="goods-collect">发现</van-tabbar-item>
     <van-tabbar-item to="/chitchat" icon="comment">消息</van-tabbar-item>
