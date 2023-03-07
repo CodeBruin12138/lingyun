@@ -1,6 +1,5 @@
 <template>
-  <!-- 最外层的div; -->
-  <div></div>
+  <HomeTopClassify></HomeTopClassify>
 </template>
 <script setup lang="ts"></script>
 <style scoped></style>

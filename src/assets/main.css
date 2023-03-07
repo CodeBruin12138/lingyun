@@ -5,6 +5,15 @@ body,
   height: 100%;
   margin: 0 auto;
   padding: 0;
+  font-family: "阿里妈妈东方大楷 Regular";
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+/* 隐藏滚动条; */
+  /* overflow: hidden; */
+
 }
 @font-face {
   font-family: "阿里妈妈东方大楷 Regular";font-weight: 400;src: url("../assets//Alimama_DongFangDaKai_Regular.woff2") format("woff2"),

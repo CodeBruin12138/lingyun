@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import axios from '@/util/request'
+import { useUniversalStore } from '@/stores/universal'
 import HomeTopClassify from '@/components/home/HomeTopClassify.vue'
 import HomeLikeItem from '@/components/home/HomeLikeItem.vue'
+import HomeTopPledge from '@/components/home/HomeTopPledge.vue'
+import HomeNewUser from '@/components/home/HomeNewUser.vue'
+import HomeEverydayRecommend from '@/components/home/HomeEverydayRecommend.vue'
+import HomeChoiceness from '@/components/home/HomeChoiceness.vue'
 import { ref, onMounted, reactive } from 'vue'
 const count = ref(0)
 const isLoading = ref(false)
+const universalStore = useUniversalStore()
 const images = [
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/25/196/ias_1c93a487013a15a446b69c7d64b2038a_1135x545_85.jpg',
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/21/97/ias_60616acd6729d12be5eb7d5969770d8f_1135x545_85.jpg',
@@ -19,7 +25,7 @@ const goods = reactive({
       goods_classify: 10001,
       goods_data: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
       goods_discounts: '0.00',
-      goods_image: 'ly_e715142b5ff9340cf91decd00.jpg',
+      goods_image: 'ly_3e1347e02e632ab942926d133.jpg',
       goods_name: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
       goods_num: 51,
       goods_price: '32.00',
@@ -32,10 +38,16 @@ const goods = reactive({
 })
 // 在页面加载的时候, 请求数据;
 onMounted(() => {
-  axios.get('/goods/getGoodsList').then((res) => {
-    goods.goodsList = res.data.result.list
-    console.log(res.data.result.list)
-  })
+  axios
+    .get('/goods/getGoodsList', {
+      params: {
+        pageNum: universalStore.page_num,
+        pageSize: 10
+      }
+    })
+    .then((res) => {
+      goods.goodsList = res.data.result.list
+    })
 })
 
 // 下拉刷新;
@@ -44,6 +56,23 @@ function onRefresh() {
     count.value++
     isLoading.value = false
   }, 1000)
+}
+
+window.onscroll = function () {
+  let scrollbottom = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollbottom >= 100) {
+    universalStore.addPageNum()
+    axios
+      .get('/goods/getGoodsList', {
+        params: {
+          pageNum: universalStore.page_num,
+          pageSize: 10
+        }
+      })
+      .then((res) => {
+        goods.goodsList = goods.goodsList.concat(res.data.result.list)
+      })
+  }
 }
 </script>
 <template>
@@ -81,32 +110,18 @@ function onRefresh() {
           </van-swipe-item>
         </van-swipe>
       </div>
-      <!-- 轮播下的注释; -->
-      <div class="header-swipe-down">
-        <div>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-tianmaozhengpinbaozhang"></use>
-          </svg>
-          100%正品保证
-        </div>
-        <div>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-servicejiayipeisan"></use>
-          </svg>
-          假一赔十
-        </div>
-        <div>
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-yuanxingshou"></use>
-          </svg>
-          24小时安心售后
-        </div>
-      </div>
+      <!-- 轮播下的保证; -->
+      <HomeTopPledge></HomeTopPledge>
       <!-- 轮播下的分类按钮; -->
       <HomeTopClassify></HomeTopClassify>
-      <!-- 顶部最新活动; -->
-      <div class="">
-        <img src="//b.appsimg.com/upload/momin/2023/03/02/13/1677750964961.jpg" alt="" />
+      <!-- 顶部最新人专场 -->
+      <HomeNewUser></HomeNewUser>
+      <!-- 每日推荐; -->
+      <HomeEverydayRecommend></HomeEverydayRecommend>
+      <!-- 好物推荐; -->
+      <div>
+        <p>好物精选</p>
+        <HomeChoiceness></HomeChoiceness>
       </div>
       <!-- 猜你喜欢; -->
       <div class="home-like">
@@ -118,6 +133,10 @@ function onRefresh() {
             class="home-like-item-one"
             :goodsData="item"
           ></HomeLikeItem>
+        </div>
+        <!-- 底部填充; -->
+        <div class="home-bottom">
+          <p>没有啦, 到底了</p>
         </div>
       </div>
     </van-pull-refresh>
@@ -197,6 +216,16 @@ function onRefresh() {
     justify-content: space-around;
     .home-like-item-one {
       width: 46%;
+    }
+  }
+  // 底部填充div样式;
+  .home-bottom {
+    margin: auto;
+    width: 100%;
+    p {
+      color: darkgray;
+      line-height: 0.8125rem;
+      text-align: center;
     }
   }
 }
