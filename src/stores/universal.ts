@@ -17,7 +17,11 @@ export const useUniversalStore = defineStore(
     function addPageNum() {
       page_num.value++
     }
-    return { isShowTabBar, setShowTabBar, addPageNum, page_num }
+    // 重置分页;
+    function resetPageNum() {
+      page_num.value = 1
+    }
+    return { isShowTabBar, setShowTabBar, addPageNum, page_num, resetPageNum }
   },
   {
     persist: {

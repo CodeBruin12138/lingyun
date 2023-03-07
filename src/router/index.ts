@@ -60,17 +60,29 @@ const router = createRouter({
         }
       }
     },
+    //商品详情页;
     {
-      // 登录页;
+      path: '/goodsDetail/:id',
+      name: 'goodsDetail',
+      component: () => import('@/views/GoodsDetailView.vue')
+    },
+    // 登录页;
+    {
       path: '/login',
       name: 'login',
       component: () => import('@/views/LoginView.vue')
     },
+    // 测试页;
     {
-      // 测试页;
       path: '/test',
       name: 'test',
       component: () => import('@/views/TestView.vue')
+    },
+    // 404页;
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'notFound',
+      component: () => import('@/views/NotFoundView.vue')
     }
   ]
 })

@@ -2,8 +2,9 @@ import axios from 'axios'
 
 const requests = axios.create({
   // 设置基础路径;
-  // baseURL: '/api',
-  baseURL: 'http://www.lingyunstar.top:12138/',
+  // baseURL: 'http://localhost:12138',
+  baseURL: 'http://www.lingyunstar.top:12138',
+
   // 设置请求头;
   headers: {
     'Content-Type': 'application/json'

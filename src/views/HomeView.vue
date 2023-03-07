@@ -1,55 +1,42 @@
 <script setup lang="ts">
 import axios from '@/util/request'
-import { useUniversalStore } from '@/stores/universal'
 import HomeTopClassify from '@/components/home/HomeTopClassify.vue'
 import HomeLikeItem from '@/components/home/HomeLikeItem.vue'
 import HomeTopPledge from '@/components/home/HomeTopPledge.vue'
 import HomeNewUser from '@/components/home/HomeNewUser.vue'
 import HomeEverydayRecommend from '@/components/home/HomeEverydayRecommend.vue'
 import HomeChoiceness from '@/components/home/HomeChoiceness.vue'
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useGoodsListStore } from '@/stores/goods'
+import { useUniversalStore } from '@/stores/universal'
+import { useRouter, useRoute } from 'vue-router'
+const goodsListStore = useGoodsListStore()
+const universalStore = useUniversalStore()
 const count = ref(0)
 const isLoading = ref(false)
-const universalStore = useUniversalStore()
+const router = useRouter()
+const route = useRoute()
+
 const images = [
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/25/196/ias_1c93a487013a15a446b69c7d64b2038a_1135x545_85.jpg',
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2023/02/21/97/ias_60616acd6729d12be5eb7d5969770d8f_1135x545_85.jpg',
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2022/11/01/163/ias_1a2a3e46db4457ad977223f136567ea3_1135x545_85.jpg',
   'https://h2.appsimg.com/a.appsimg.com/upload/brand/upcb/2021/08/12/184/ias_67f14f070915b4a91b6ba98698c35d3c_1135x545_85.jpg'
 ]
-const goods = reactive({
-  goodsList: [
-    {
-      createdAt: '2023-03-02T09:58:53.000Z',
-      deletedAt: null,
-      goods_classify: 10001,
-      goods_data: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
-      goods_discounts: '0.00',
-      goods_image: 'ly_3e1347e02e632ab942926d133.jpg',
-      goods_name: '竖两扣阔腿裤子女高腰垂感显瘦休闲宽松黑色直筒裤春季女装西装裤',
-      goods_num: 51,
-      goods_price: '32.00',
-      goods_sell: 0,
-      goods_shop: 9,
-      id: 23,
-      updatedAt: '2023-03-02T09:58:53.000Z'
-    }
-  ]
-})
 // 在页面加载的时候, 请求数据;
 onMounted(() => {
+  universalStore.setShowTabBar(true)
   axios
     .get('/goods/getGoodsList', {
       params: {
-        pageNum: universalStore.page_num,
-        pageSize: 10
+        pageNum: 1,
+        pageSize: 100
       }
     })
     .then((res) => {
-      goods.goodsList = res.data.result.list
+      goodsListStore.goodsList = res.data.result.list
     })
 })
-
 // 下拉刷新;
 function onRefresh() {
   setTimeout(() => {
@@ -57,22 +44,18 @@ function onRefresh() {
     isLoading.value = false
   }, 1000)
 }
+// 跳转商品详情;
+function goGoodsInfo(id: number) {
+  router.push({
+    path: '/goodsDetail/:id',
+    query: {
+      id
+    }
+  })
+}
 
-window.onscroll = function () {
-  let scrollbottom = document.documentElement.scrollTop || document.body.scrollTop
-  if (scrollbottom >= 100) {
-    universalStore.addPageNum()
-    axios
-      .get('/goods/getGoodsList', {
-        params: {
-          pageNum: universalStore.page_num,
-          pageSize: 10
-        }
-      })
-      .then((res) => {
-        goods.goodsList = goods.goodsList.concat(res.data.result.list)
-      })
-  }
+function dingbu() {
+  document.documentElement.scrollTop = 0
 }
 </script>
 <template>
@@ -128,7 +111,8 @@ window.onscroll = function () {
         <p>猜你喜欢</p>
         <div class="home-like-item">
           <HomeLikeItem
-            v-for="(item, index) in goods.goodsList"
+            @click="goGoodsInfo(item.id)"
+            v-for="(item, index) in goodsListStore.goodsList"
             :key="index"
             class="home-like-item-one"
             :goodsData="item"
@@ -140,6 +124,9 @@ window.onscroll = function () {
         </div>
       </div>
     </van-pull-refresh>
+    <div class="huidaodingbu">
+      <button @click="dingbu()">顶</button>
+    </div>
   </div>
 </template>
 <style scoped lang="less">
@@ -228,5 +215,15 @@ window.onscroll = function () {
       text-align: center;
     }
   }
+}
+// 回到顶部;
+.huidaodingbu {
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: aqua;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
 }
 </style>

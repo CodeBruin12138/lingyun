@@ -10,6 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     GoodsData: typeof import('./src/components/commonly/GoodsData.vue')['default']
+    GoodsDetailTopNavBar: typeof import('./src/components/goods/GoodsDetailTopNavBar.vue')['default']
     HelloWorld: typeof import('./src/components/commonly/HelloWorld.vue')['default']
     HomeChoiceness: typeof import('./src/components/home/HomeChoiceness.vue')['default']
     HomeChoicenessItem: typeof import('./src/components/home/HomeChoicenessItem.vue')['default']
@@ -30,6 +31,7 @@ declare module '@vue/runtime-core' {
     VanButton: typeof import('vant/es')['Button']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanField: typeof import('vant/es')['Field']
+    VanIcon: typeof import('vant/es')['Icon']
     VanPullRefresh: typeof import('vant/es')['PullRefresh']
     VanSearch: typeof import('vant/es')['Search']
     VanSwipe: typeof import('vant/es')['Swipe']
