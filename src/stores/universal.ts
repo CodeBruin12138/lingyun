@@ -7,8 +7,10 @@ export const useUniversalStore = defineStore(
   () => {
     // 是否显示tabbar;
     const isShowTabBar = ref(true)
+    // 分页;
     const page_num = ref(1)
-
+    // 是否显示回到顶部按钮;
+    const isShowBackTop = ref(false)
     // 控制tabbar的显示与隐藏;
     function setShowTabBar(data: boolean) {
       isShowTabBar.value = data
@@ -21,7 +23,20 @@ export const useUniversalStore = defineStore(
     function resetPageNum() {
       page_num.value = 1
     }
-    return { isShowTabBar, setShowTabBar, addPageNum, page_num, resetPageNum }
+    // 是否显示回到顶部按钮;
+    function setShowBackTop(data: boolean) {
+      isShowBackTop.value = data
+    }
+
+    return {
+      isShowTabBar,
+      isShowBackTop,
+      page_num,
+      setShowTabBar,
+      addPageNum,
+      resetPageNum,
+      setShowBackTop
+    }
   },
   {
     persist: {

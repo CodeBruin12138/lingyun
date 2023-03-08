@@ -53,6 +53,15 @@ function goGoodsInfo(id: number) {
     }
   })
 }
+// 滚动条滚动的时候, 获取滚动条距离顶部的距离;
+window.onscroll = function () {
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop > 900) {
+    universalStore.setShowBackTop(true)
+  } else {
+    universalStore.setShowBackTop(false)
+  }
+}
 
 function dingbu() {
   document.documentElement.scrollTop = 0
@@ -124,8 +133,10 @@ function dingbu() {
         </div>
       </div>
     </van-pull-refresh>
-    <div class="huidaodingbu">
-      <button @click="dingbu()">顶</button>
+    <div v-show="universalStore.isShowBackTop" class="huidaodingbu" @click="dingbu()">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-top"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -218,12 +229,19 @@ function dingbu() {
 }
 // 回到顶部;
 .huidaodingbu {
-  width: 1.25rem;
-  height: 1.25rem;
-  background-color: aqua;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background-color: rgb(167, 182, 182);
   border-radius: 100%;
   position: fixed;
   bottom: 2rem;
   right: 1rem;
+  color: rgb(2, 186, 237);
+  svg {
+    width: 0.625rem;
+    height: 0.625rem;
+    margin: 0.1875rem;
+    padding-right: 0.3125rem;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 // 购物车相关状态;
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import { defineStore } from 'pinia'
 
 // 默认购物车相关状态;
