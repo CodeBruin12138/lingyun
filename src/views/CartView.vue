@@ -7,7 +7,7 @@
 </template>
 <script lang="ts" setup>
 // 导入;
-import { onMounted, reactive } from 'vue'
+import { onMounted } from 'vue'
 import axios from '@/util/request'
 import { useCartStore } from '@/stores/cart'
 const cartStore = useCartStore()

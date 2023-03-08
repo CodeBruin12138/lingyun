@@ -5,11 +5,17 @@ import { defineStore } from 'pinia'
 export const useGoodsListStore = defineStore(
   'goodsList',
   () => {
-    let goodsList = reactive([])
+    const goods = reactive({
+      goodsList: [
+        {
+          id: 1
+        }
+      ]
+    })
     function setGoodsList(data: any) {
-      goodsList = goodsList.concat(data)
+      goods.goodsList = goods.goodsList.concat(data)
     }
-    return { goodsList, setGoodsList }
+    return { goods, setGoodsList }
   },
   {
     persist: {

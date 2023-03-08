@@ -70,7 +70,6 @@ function addCart() {
           )
           .then((res) => {
             if (res.data.code === 0) {
-              router.push('/cart')
               // 加入购物车成功;
               showSuccessToast('加入购物车成功!')
             }

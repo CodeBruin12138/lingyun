@@ -34,7 +34,7 @@ onMounted(() => {
       }
     })
     .then((res) => {
-      goodsListStore.goodsList = res.data.result.list
+      goodsListStore.goods.goodsList = res.data.result.list
     })
 })
 // 下拉刷新;
@@ -62,9 +62,10 @@ window.onscroll = function () {
     universalStore.setShowBackTop(false)
   }
 }
-
+// 回到顶部;
 function dingbu() {
-  document.documentElement.scrollTop = 0
+  scrollTo(0, 0)
+  // document.documentElement.scrollTop = 0
 }
 </script>
 <template>
@@ -121,7 +122,7 @@ function dingbu() {
         <div class="home-like-item">
           <HomeLikeItem
             @click="goGoodsInfo(item.id)"
-            v-for="(item, index) in goodsListStore.goodsList"
+            v-for="(item, index) in goodsListStore.goods.goodsList"
             :key="index"
             class="home-like-item-one"
             :goodsData="item"
@@ -133,6 +134,7 @@ function dingbu() {
         </div>
       </div>
     </van-pull-refresh>
+    <!-- 回到顶部; -->
     <div v-show="universalStore.isShowBackTop" class="huidaodingbu" @click="dingbu()">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-top"></use>
