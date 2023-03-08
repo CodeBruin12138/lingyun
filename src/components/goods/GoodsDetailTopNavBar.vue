@@ -19,9 +19,11 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
 function tiaozhuan() {
   // 跳转到首页;
-  window.location.href = '/'
+  router.go(-1)
 }
 </script>
 <style lang="less" scoped>

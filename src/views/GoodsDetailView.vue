@@ -77,7 +77,7 @@ function addCart() {
           })
       } else {
         // token不准确, 跳转到登录页面;
-        window.location.href = '/login'
+        router.push('/login')
       }
     })
 }
