@@ -6,6 +6,104 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "12178768",
+      "name": "待评价",
+      "font_class": "daipingjia2",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "14706463",
+      "name": "待发货",
+      "font_class": "daifahuo2",
+      "unicode": "e6c1",
+      "unicode_decimal": 59073
+    },
+    {
+      "icon_id": "14706471",
+      "name": "待收货",
+      "font_class": "daishouhuo1",
+      "unicode": "e6c6",
+      "unicode_decimal": 59078
+    },
+    {
+      "icon_id": "24268678",
+      "name": "退款-面型",
+      "font_class": "tuikuan-mianxing",
+      "unicode": "e701",
+      "unicode_decimal": 59137
+    },
+    {
+      "icon_id": "807963",
+      "name": "待评价",
+      "font_class": "daipingjia1",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "10291981",
+      "name": "待发货",
+      "font_class": "daifahuo1",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "14690296",
+      "name": "退款售后",
+      "font_class": "tuikuanshouhou",
+      "unicode": "e6be",
+      "unicode_decimal": 59070
+    },
+    {
+      "icon_id": "16546209",
+      "name": "待收货",
+      "font_class": "daishouhuo",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "17541535",
+      "name": "订单-待付款",
+      "font_class": "dingdan-daifukuan",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "11542833",
+      "name": "待发货",
+      "font_class": "daifahuo",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "16132819",
+      "name": "待收货",
+      "font_class": "gouwuche_daishouhuo",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "17541527",
+      "name": "订单-已退款",
+      "font_class": "dingdan-yituikuan",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "17967604",
+      "name": "待付款",
+      "font_class": "daifukuan",
+      "unicode": "ee8d",
+      "unicode_decimal": 61069
+    },
+    {
+      "icon_id": "17967607",
+      "name": "待评价",
+      "font_class": "daipingjia",
+      "unicode": "ee90",
+      "unicode_decimal": 61072
+    },
+    {
       "icon_id": "34064566",
       "name": "抖音",
       "font_class": "douyin",

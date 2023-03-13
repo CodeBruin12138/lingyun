@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3929120 */
-  src: url('iconfont.woff2?t=1677825956913') format('woff2'),
-       url('iconfont.woff?t=1677825956913') format('woff'),
-       url('iconfont.ttf?t=1677825956913') format('truetype');
+  src: url('iconfont.woff2?t=1678700718368') format('woff2'),
+       url('iconfont.woff?t=1678700718368') format('woff'),
+       url('iconfont.ttf?t=1678700718368') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,62 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-daipingjia2:before {
+  content: "\e633";
+}
+
+.icon-daifahuo2:before {
+  content: "\e6c1";
+}
+
+.icon-daishouhuo1:before {
+  content: "\e6c6";
+}
+
+.icon-tuikuan-mianxing:before {
+  content: "\e701";
+}
+
+.icon-daipingjia1:before {
+  content: "\e62f";
+}
+
+.icon-daifahuo1:before {
+  content: "\e630";
+}
+
+.icon-tuikuanshouhou:before {
+  content: "\e6be";
+}
+
+.icon-daishouhuo:before {
+  content: "\e631";
+}
+
+.icon-dingdan-daifukuan:before {
+  content: "\e632";
+}
+
+.icon-daifahuo:before {
+  content: "\e618";
+}
+
+.icon-gouwuche_daishouhuo:before {
+  content: "\e62d";
+}
+
+.icon-dingdan-yituikuan:before {
+  content: "\e62e";
+}
+
+.icon-daifukuan:before {
+  content: "\ee8d";
+}
+
+.icon-daipingjia:before {
+  content: "\ee90";
 }
 
 .icon-douyin:before {

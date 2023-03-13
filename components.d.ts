@@ -34,6 +34,8 @@ declare module '@vue/runtime-core' {
     ScannedItem: typeof import('./src/components/commonly/ScannedItem.vue')['default']
     SearchBox: typeof import('./src/components/commonly/SearchBox.vue')['default']
     TheWelcome: typeof import('./src/components/commonly/TheWelcome.vue')['default']
+    UserAccountInformation: typeof import('./src/components/user/UserAccountInformation.vue')['default']
+    UserOrderForm: typeof import('./src/components/user/UserOrderForm.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanField: typeof import('vant/es')['Field']

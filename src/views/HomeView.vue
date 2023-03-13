@@ -90,7 +90,7 @@ function dingbu() {
       <!-- 轮播下的保证; -->
       <HomeTopPledge></HomeTopPledge>
       <!-- 轮播下的分类按钮; -->
-      <HomeTopClassify></HomeTopClassify>
+      <HomeTopClassify class="home-top-classify"></HomeTopClassify>
       <!-- 顶部最新人专场 -->
       <HomeNewUser></HomeNewUser>
       <!-- 每日推荐; -->
@@ -124,37 +124,11 @@ function dingbu() {
 <style scoped lang="less">
 /* 顶部红色底色; */
 .home-header {
-  height: 7.5rem;
+  height: 3.75rem;
   display: flex;
   justify-content: space-between;
   background-color: red;
   border-radius: 0% 0% 50% 50%;
-
-  //  顶部搜索栏的外部div;
-  .home-header-one {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 1.25rem;
-    background-color: aqua;
-    padding: 0.3125rem;
-  }
-
-  // 扫码图标;
-  .home-header-scan {
-    width: 0.625rem;
-    height: 0.625rem;
-    color: aliceblue;
-  }
-
-  // 顶部搜索栏样式;
-  .home-header-input {
-    height: 10px;
-  }
-
-  // 顶部跳转消息页图标;
-  // .home-header-information {
-  // }
 }
 
 // 顶部轮播图样式;
@@ -165,13 +139,20 @@ function dingbu() {
   margin-left: 0.1875rem;
   margin-right: 0.1875rem;
   position: absolute;
-  top: 3.125rem;
+  top: 1.875rem;
 
   .home-header-swipe-img {
     width: 100%;
     height: 100%;
   }
 }
+
+// 轮播下分类样式;
+.home-top-classify {
+  margin-top: 1.5625rem;
+
+}
+
 
 // 轮播图下的注释样式;
 .header-swipe-down {
@@ -239,4 +220,5 @@ function dingbu() {
     margin: 0.1875rem;
     padding-right: 0.3125rem;
   }
-}</style>
+}
+</style>
