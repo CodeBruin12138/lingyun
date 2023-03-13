@@ -153,7 +153,6 @@ function dingbu() {
 
 }
 
-
 // 轮播图下的注释样式;
 .header-swipe-down {
   display: flex;
@@ -194,6 +193,7 @@ function dingbu() {
   .home-bottom {
     margin: auto;
     width: 100%;
+    padding-bottom: .875rem;
 
     p {
       color: darkgray;
@@ -208,17 +208,19 @@ function dingbu() {
   width: 0.9375rem;
   height: 0.9375rem;
   background-color: rgb(167, 182, 182);
-  border-radius: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: .6875rem .6875rem 1rem #d9d9d9,
+    -0.6875rem -0.6875rem 1rem #ffffff;
   position: fixed;
   bottom: 2rem;
   right: 1rem;
-  color: rgb(2, 186, 237);
+  color: rgb(25, 136, 222);
 
-  svg {
-    width: 0.625rem;
-    height: 0.625rem;
-    margin: 0.1875rem;
-    padding-right: 0.3125rem;
+  .icon {
+    font-size: .75rem;
+    padding-left: .10rem;
+    padding-top: .125rem;
   }
 }
 </style>
