@@ -4,29 +4,17 @@ import { reactive } from 'vue'
 import { useUserStore } from '@/stores/user'
 import UserOrderForm from '@/components/user/UserOrderForm.vue'
 import UserAccountInformation from '@/components/user/UserAccountInformation.vue'
+import UserTopData from '@/components/user/UserTopData.vue'
+import UserTop from '@/components/user/UserTop.vue'
 const userStore = useUserStore()
 const userInfo = reactive(userStore.userInfo)
 </script>
 <template>
-  <div class="user-home">
-    <div class="user">
-      <!-- 顶部设置; -->
-      <div class="user-top"></div>
-      <!-- 个人信息; -->
-      <div class="user-info">
-        <div class="user-info-img">
-          <img :src="`http://lingyunstar.top:12138/${userInfo.user_portrait}`" />
-        </div>
-        <div class="user-info-name">
-          <!-- 用户名; -->
-          <p>{{ userInfo.user_title }}</p>
-          <!-- 用户账号; -->
-          <span>{{ userInfo.user_name }}</span>
-          <br />
-          <!-- 说明; -->
-          <span>{{ userInfo.user_explained }}</span>
-        </div>
-      </div>
+  <div class="user">
+    <!-- 用户头像及部分信息展示; -->
+    <div class="user-one">
+      <UserTop></UserTop>
+      <UserTopData :user="userInfo" class="user-top-data"></UserTopData>
     </div>
     <!-- 用户页的用户订单及其余账户信息展示; -->
     <div class="user-two">
@@ -39,11 +27,19 @@ const userInfo = reactive(userStore.userInfo)
 </template>
 <style lang="less" scoped>
 // 最外层容器;
-.user-home {
+.user {
   width: 100%;
   height: 100%;
   background-color: #f4f4f4f4;
-  // background-color: aquamarine;
+
+  // 用户头像及部分信息展示;
+  .user-one {
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(90deg, #ffaeab, #ff0303);
+
+    .user-top-data {}
+  }
 
   // 用户页的用户订单及其余账户信息展示样式;
   .user-two {
@@ -56,74 +52,13 @@ const userInfo = reactive(userStore.userInfo)
       margin: auto;
       margin-bottom: .375rem;
     }
-  }
 
-
-
-}
-
-// 我的订单;
-.user-order-form {
-  // position: absolute;
-  // top: 26%;
-  // left: 3%;
-}
-
-.user {
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(90deg, #ffaeab, #ff0303);
-
-  // 顶部设置;
-  .user-top {
-    width: 100%;
-    height: 50px;
-  }
-
-  // 顶部个人信息;
-  .user-info {
-    display: flex;
-    margin-top: 1.25rem;
-    margin-left: 0.5rem;
-
-    // 头像;
-    .user-info-img {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin-right: 0.5rem;
-      border-radius: 50%;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .user-info-name {
-      width: 60%;
-      line-height: 0.3rem;
-
-      p {
-        font-size: 0.5rem;
-        color: aliceblue;
-      }
-
-      span {
-        font-size: 0.3125rem;
-        color: aliceblue;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 1;
-      }
+    // 我的订单;
+    .user-order-form {
+      // position: absolute;
+      // top: 26%;
+      // left: 3%;
     }
   }
-
-
-
-
-
 }
 </style>

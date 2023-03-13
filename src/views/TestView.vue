@@ -1,16 +1,19 @@
 <template>
   <div class="test">
-    <UserAccountInformation></UserAccountInformation>
+
+    <UserTop>
+
+    </UserTop>
   </div>
 </template>
 <script setup lang="ts">
-import UserAccountInformation from '@/components/user/UserAccountInformation.vue';
+import UserTop from '@/components/user/UserTop.vue'
 
 </script>
 <style lang="less" scoped>
 .test {
   width: 100%;
   height: 100%;
-  background-color: #f4f4f4f4;
+  background-color: aqua;
 }
 </style>

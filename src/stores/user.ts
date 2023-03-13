@@ -6,7 +6,7 @@ export const useUserStore = defineStore(
   () => {
     // 用户基础信息;
     const userInfo = reactive({
-      user_name: 123456789,
+      user_name: 'ly_123456789',
       user_portrait: 'ly_123456789.jpg',
       user_title: 'ly_123456789',
       user_age: 18,
