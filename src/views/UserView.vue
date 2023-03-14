@@ -6,6 +6,7 @@ import UserOrderForm from '@/components/user/UserOrderForm.vue'
 import UserAccountInformation from '@/components/user/UserAccountInformation.vue'
 import UserTopData from '@/components/user/UserTopData.vue'
 import UserTop from '@/components/user/UserTop.vue'
+import UserCommon from '@/components/user/UserCommon.vue'
 const userStore = useUserStore()
 const userInfo = reactive(userStore.userInfo)
 </script>
@@ -22,6 +23,8 @@ const userInfo = reactive(userStore.userInfo)
       <UserAccountInformation class="user-account-information"></UserAccountInformation>
       <!-- 我的订单; -->
       <UserOrderForm class="user-order-form"></UserOrderForm>
+      <!-- 用户页底部常用; -->
+      <UserCommon></UserCommon>
     </div>
   </div>
 </template>

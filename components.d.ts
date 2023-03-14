@@ -35,6 +35,7 @@ declare module '@vue/runtime-core' {
     SearchBox: typeof import('./src/components/commonly/SearchBox.vue')['default']
     TheWelcome: typeof import('./src/components/commonly/TheWelcome.vue')['default']
     UserAccountInformation: typeof import('./src/components/user/UserAccountInformation.vue')['default']
+    UserCommon: typeof import('./src/components/user/UserCommon.vue')['default']
     UserOrderForm: typeof import('./src/components/user/UserOrderForm.vue')['default']
     UserTop: typeof import('./src/components/user/UserTop.vue')['default']
     UserTopData: typeof import('./src/components/user/UserTopData.vue')['default']

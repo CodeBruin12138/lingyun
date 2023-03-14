@@ -1,13 +1,10 @@
 <template>
   <div class="test">
-
-    <UserTop>
-
-    </UserTop>
+    <UserCommon></UserCommon>
   </div>
 </template>
 <script setup lang="ts">
-import UserTop from '@/components/user/UserTop.vue'
+import UserCommon from '@/components/user/UserCommon.vue';
 
 </script>
 <style lang="less" scoped>
