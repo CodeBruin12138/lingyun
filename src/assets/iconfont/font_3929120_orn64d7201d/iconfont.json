@@ -6,6 +6,62 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "166593",
+      "name": "擦除",
+      "font_class": "cachu",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "4138765",
+      "name": "擦除",
+      "font_class": "cachu1",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "9800540",
+      "name": "远程擦除",
+      "font_class": "yuanchengcachu",
+      "unicode": "e9ea",
+      "unicode_decimal": 59882
+    },
+    {
+      "icon_id": "19694655",
+      "name": "清除、擦除",
+      "font_class": "qingchucachu",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "20954051",
+      "name": "擦除航线",
+      "font_class": "cachuhangxian",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "21113906",
+      "name": "擦除_erase",
+      "font_class": "cachu_erase",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "24828264",
+      "name": "擦除",
+      "font_class": "cachu2",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "33206494",
+      "name": "擦除",
+      "font_class": "cachu3",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
       "icon_id": "100626",
       "name": "设置",
       "font_class": "weibiaoti2",

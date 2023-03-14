@@ -72,6 +72,13 @@ const router = createRouter({
       name: 'login',
       component: () => import('@/views/LoginView.vue')
     },
+    // 搜索页;
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('@/views/SearchView.vue')
+    },
+
     // 测试页;
     {
       path: '/test',

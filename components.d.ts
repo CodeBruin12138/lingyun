@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CartGoodsHome: typeof import('./src/components/cart/CartGoodsHome.vue')['default']
     CartGoodsItem: typeof import('./src/components/cart/CartGoodsItem.vue')['default']
+    ChitchatNavBar: typeof import('./src/components/chitchat/ChitchatNavBar.vue')['default']
     GoodsData: typeof import('./src/components/commonly/GoodsData.vue')['default']
     GoodsDetailTopNavBar: typeof import('./src/components/goods/GoodsDetailTopNavBar.vue')['default']
     HelloWorld: typeof import('./src/components/commonly/HelloWorld.vue')['default']
@@ -33,6 +34,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     ScannedItem: typeof import('./src/components/commonly/ScannedItem.vue')['default']
     SearchBox: typeof import('./src/components/commonly/SearchBox.vue')['default']
+    SearchTop: typeof import('./src/components/search/SearchTop.vue')['default']
     TheWelcome: typeof import('./src/components/commonly/TheWelcome.vue')['default']
     UserAccountInformation: typeof import('./src/components/user/UserAccountInformation.vue')['default']
     UserCommon: typeof import('./src/components/user/UserCommon.vue')['default']
