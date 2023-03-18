@@ -28,12 +28,6 @@ const router = createRouter({
       component: () => import('@/views/CartView.vue')
     },
     {
-      //登陆测试页;
-      path: '/loginTest',
-      name: 'loginTest',
-      component: () => import('@/views/LoginTest.vue')
-    },
-    {
       //用户页;
       path: '/user',
       name: 'user',
