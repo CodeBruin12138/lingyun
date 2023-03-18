@@ -4,7 +4,7 @@
     <!-- 标题; -->
     <div class="user-order-form-one">
       <p>我的订单</p>
-      <div class="user-order-form-one-right">
+      <div class="user-order-form-one-right" @click="myOrder()">
         <span>查看全部</span>
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-right"></use>
@@ -46,7 +46,13 @@
     </div>
   </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const myOrder = () => {
+  router.push('/order')
+}
+</script>
 <style lang="less" scoped>
 // 用户页,我的订单组件最外层;
 .user-order-form {

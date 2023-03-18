@@ -28,6 +28,12 @@ const router = createRouter({
       component: () => import('@/views/CartView.vue')
     },
     {
+      //登陆测试页;
+      path: '/loginTest',
+      name: 'loginTest',
+      component: () => import('@/views/LoginTest.vue')
+    },
+    {
       //用户页;
       path: '/user',
       name: 'user',
@@ -58,7 +64,8 @@ const router = createRouter({
           // 如果不存在token,则跳转到登录页;
           next('/login')
         }
-      }
+      },
+      children: []
     },
     //商品详情页;
     {
@@ -78,7 +85,39 @@ const router = createRouter({
       name: 'search',
       component: () => import('@/views/SearchView.vue')
     },
-
+    // 订单页;
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('@/views/OrderView.vue'),
+      // 进入路由前判断是否有token并校验token是否正确;
+      beforeEnter: (to, from, next) => {
+        // 获取本地存储token;
+        const token = localStorage.getItem('ly_at')
+        // 如果存在token;
+        if (token) {
+          // 对获取到的token进行验证;
+          axios
+            .get('/user/verifyUserToken', {
+              headers: {
+                Authorization: token
+              }
+            })
+            .then((res) => {
+              // 如果token正确,则跳转到用户页;
+              if (res.data.code === 0) {
+                next()
+                return
+              }
+              // 如果token不正确,则跳转到登录页;
+              next('/login')
+            })
+        } else {
+          // 如果不存在token,则跳转到登录页;
+          next('/login')
+        }
+      }
+    },
     // 测试页;
     {
       path: '/test',
